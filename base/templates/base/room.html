@@ -209,7 +209,7 @@
                     >Just now </span
                   >
                 </div>
-
+                {% if request.user.username == data.username %}
                 <a href="#">
                   <div class="thread__delete">
                     <svg
@@ -226,6 +226,7 @@
                     </svg>
                   </div>
                 </a>
+                {% endif %}
               </div>
               <div class="thread__details">${data.message}</div>
             </div>` + document.getElementById(
