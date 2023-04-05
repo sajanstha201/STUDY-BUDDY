@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-2#lp1dh*j)9wc)zi=g&&te^n3*it7_1&r%1%ly83o3mal!$st$
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
 
 # Application definition
 
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'channels',
 ]
 
 AUTH_USER_MODEL = 'base.User'
@@ -134,3 +135,9 @@ MEDIA_ROOT = BASE_DIR / 'static/images'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+ASGI_APPLICATION = 'studybuddy.routing.application'
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer",
+    },
+}
