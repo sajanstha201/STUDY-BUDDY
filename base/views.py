@@ -103,11 +103,14 @@ def room(request, room_id):
     if request.method == "POST":
         # objects.create() will create the object and save it to database in a single step
         # so instead of using .save() method after creating the instance we can use this
+        print("Post called")
+        print("message ", request.POST['body'])
         message = Message.objects.create(
             user=request.user,
             room=room,
             body=request.POST['body']
         )
+        print(message)
         room.participants.add(message.user)
         return redirect('base:room', room_id)
     return render(request, 'base/room.html', context)
