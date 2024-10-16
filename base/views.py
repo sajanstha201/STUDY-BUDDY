@@ -93,7 +93,7 @@ def home(request):
     }
     return render(request, 'base/home.html', context)
 
-
+@login_required(login_url='base:login')
 def room(request, room_id):
     room = Room.objects.get(pk=room_id)
     room_messages = room.message_set.all().order_by('-created')

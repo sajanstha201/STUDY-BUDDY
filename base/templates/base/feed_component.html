@@ -1,5 +1,6 @@
 {% for room in rooms %}
 <div class="roomListRoom">
+  <h1 class="roomListRoom-title">{{room.topic.name}}</h1>
   <div class="roomListRoom__header">
     <a href="{% url 'base:user-profile' room.host.id %}" class="roomListRoom__author">
       <div class="avatar avatar--small">
@@ -7,6 +8,7 @@
       </div>
       <span>@{{ room.host.username }}</span>
     </a>
+   
     <div class="roomListRoom__actions">
       <span>{{ room.created | timesince }}</span>
     </div>

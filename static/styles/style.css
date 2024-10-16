@@ -646,7 +646,13 @@ a {
   border-radius: 1rem;
   padding: 2rem;
 }
-
+.roomListRoom-title{
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  color: var(--color-light);
+  transition: all 0.3s ease-in-out;
+}
 .roomListRoom__header {
   display: flex;
   justify-content: space-between;
