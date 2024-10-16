@@ -57,6 +57,7 @@ def registerUser(request):
         # creates an instance of form with data populated by request.POST
         form = MyUserCreationForm(request.POST)
         if form.is_valid():
+            print('the form is valid while regestring')
             # before actually saving the object in the database. if we want to make
             # changes to our object. We can get the object using form.save(commit=False)
             # form.save(commit=False) will throw an object of model which we want to save
@@ -67,6 +68,8 @@ def registerUser(request):
             login(request, user)
             context['username'] = user.username
             return redirect('base:home')
+        else:
+            print(form.errors)
     return render(request, 'base/login_register.html', context)
 
 
@@ -213,7 +216,7 @@ def userProfile(request, user_id):
     user = User.objects.get(pk=user_id)
     rooms = user.room_set.all()
     topics = Topic.objects.all()
-    room_messages = user.message_set.all()
+    room_messages = user.messages.all()
     context = {
         'user': user,
         'rooms': rooms,
