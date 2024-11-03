@@ -4,7 +4,7 @@ It's a site where users can create rooms for certain topics. And other users can
 ## Installation
 1. Clone the project.
    ```
-   git clone https://github.com/sajanstha201/Study-room.git
+   git clone https://github.com/sajanstha201/STUDY-BUDDY.git
    ```
 2. Install Django framework.
    ```
